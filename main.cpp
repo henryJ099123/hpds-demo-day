@@ -124,6 +124,7 @@ int main(int argc, const char* argv[]) {
 
     free(a);
     free(b);
+    free(c);
     return 0;
 }
 

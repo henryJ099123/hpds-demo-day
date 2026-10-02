@@ -5,7 +5,7 @@ October 2, 2026
 
 # Metal Introduction
 
-This repo and presentation covers [Metal], which is Apple's graphics and compute API for programmatically interacting with its GPUs. While CUDA's focus is on weaponizing GPUs for computation, Metal covers both rendering and compute; it is a true [graphics API](https://gist.github.com/MangaD/b24f4e3052ff7854c6fa5074f22bc9b2#1-what-is-a-graphics-api) that interfaces into the rendering pipeline.
+This repo and presentation covers [Metal](https://developer.apple.com/documentation/metal), which is Apple's graphics and compute API for programmatically interacting with its GPUs. While CUDA's focus is on weaponizing GPUs for computation, Metal covers both rendering and compute; it is a true [graphics API](https://gist.github.com/MangaD/b24f4e3052ff7854c6fa5074f22bc9b2#1-what-is-a-graphics-api) that interfaces into the rendering pipeline.
 
 > This demo will not cover the rendering pipeline. If you are curious, the `triangle` subdirectory has code for getting a triangle on the screen.
 
@@ -23,7 +23,7 @@ Furthermore, you can write the kernels in an extended C++ superset with some fan
 
 There is still a "client-server" relationship between the GPU and the CPU. In order to send commands to the GPU, you allocate a *command queue* (which is similar to a stream), and you wrap your kernel in a *command buffer* to send into the queue to the GPU. To actually transform kernel source code into GPU instructions, you need a *command encoder*. You also need a *pipeline object* to encapsulate the kernel before passing it into the encoder on the CPU side. Most of these are taken care of for you by CUDA.
 
-> See [Apple's official explanation](https://developer.apple.com/documentation/metal/setting-up-a-command-structure). There is a really good picture that shows this in [this Metal tutorial](https://metaltutorial.com/Lesson%201%3A%20Hello%20Metal/2.%20Hello%20Triangle/) (its focus is graphics but the image also works for compute), at the section "The Metal Flow".
+> See [Apple's official explanation](https://developer.apple.com/documentation/metal/setting-up-a-command-structure). There is a really good picture that shows this in [this Metal tutorial](https://metaltutorial.com/Lesson%201%3A%20Hello%20Metal/2.%20Hello%20Triangle/) (its focus is graphics but the image also works for compute), at the section "The Metal Flow". There's also a good explanation from Apple's old documentation about [Command Organization and Execution](https://developer.apple.com/library/archive/documentation/Miscellaneous/Conceptual/MetalProgrammingGuide/Cmd-Submiss/Cmd-Submiss.html#//apple_ref/doc/uid/TP40014221-CH3-SW1).
 
 A lot of this boilerplate is because the same model of interaction is used for graphics rendering. A command buffer makes more sense when you are doing draw calls (i.e., you have multiple commands), and a pipeline object is more sensible with multiple kernels (i.e., vertex and fragment shaders).
 
