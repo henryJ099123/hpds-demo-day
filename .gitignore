@@ -1,0 +1,6 @@
+main
+.DS_Store
+*.o
+*.ar
+*.air
+*.metallib
